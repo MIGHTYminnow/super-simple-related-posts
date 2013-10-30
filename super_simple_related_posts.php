@@ -1,14 +1,22 @@
 <?php
 /**
  * @package Super_Simple_Related_posts
+<<<<<<< HEAD
  * @version 1.2
+=======
+ * @version 1.1
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
  */
 
 /**
  * Plugin Name: Super Simple Related Posts
  * Plugin URI:  http://mightyminnow.com
  * Description: A super simple plugin to output related posts based on categories, tags, or custom taxonomies.
+<<<<<<< HEAD
  * Version:     1.2
+=======
+ * Version:     1.1
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
  * Author:      MIGHTYminnow
  * Author URI:  http://mightyminnow.com
  * License:     GPLv2+
@@ -30,7 +38,11 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 // Useful global constants
+<<<<<<< HEAD
 define( 'SSRP_VERSION', '1.2' );
+=======
+define( 'SSRP_VERSION', '1.0' );
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
 define( 'SSRP_URL',     plugin_dir_url( __FILE__ ) );
 define( 'SSRP_PATH',    dirname( __FILE__ ) . '/' );
 
@@ -116,7 +128,10 @@ class SSRP_Widget extends WP_Widget {
         // Set widget defaults
         $this->defaults = array(
             'title'                   => '',
+<<<<<<< HEAD
             'hide_title'              => '',
+=======
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
             'post_types'              => '',
             'taxonomy'                => 'category',
             'orderby'                 => 'date',
@@ -131,9 +146,12 @@ class SSRP_Widget extends WP_Widget {
             'before_HTML'             => '',
             'after_HTML'              => '',
         );
+<<<<<<< HEAD
 
         // Add shortcode
         add_shortcode( 'ssrp', array( $this, 'ssrp_shortcode' ) );
+=======
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
     }
     
     /**
@@ -156,10 +174,13 @@ class SSRP_Widget extends WP_Widget {
             <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'ssrp'); ?></label>  
             <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" class="widefat" />
         </p>
+<<<<<<< HEAD
         <p>
             <input type="checkbox" value="1" <?php checked( 1 == $instance['hide_title'] ); ?> id="<?php echo $this->get_field_id( 'hide_title' ); ?>" name="<?php echo $this->get_field_name( 'hide_title' ); ?>">
             <label for="<?php echo $this->get_field_id( 'hide_title' ); ?>"><?php _e('Hide the widget title', 'ssrp'); ?></label>
         </p>
+=======
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
 
         <!-- Post Types -->
         <p>
@@ -337,7 +358,10 @@ class SSRP_Widget extends WP_Widget {
      * @param   array $instance the widget settings
      */
     public function widget( $args, $instance ) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
         // Exits if we're not looking at a single post/page
         if ( !is_singular() || empty( $instance['post_types'] ) )
             return;
@@ -493,13 +517,18 @@ class SSRP_Widget extends WP_Widget {
                 $output = '<div class="no-posts-message">' . $instance['no_posts_message'] . '</div>';
 
             // Apply widget_title and widget_text filters
+<<<<<<< HEAD
             $widget_title = $before_title . apply_filters( 'widget_title', $title, $instance, $this->id_base ) . $after_title;
+=======
+            $widget_title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
             $widget_text = apply_filters( 'widget_text', $output, $instance, $this->id_base );
 
             // Get before_HTML and after_HTML
             $before_HTML = '<div class="ssrp-before">' . $instance['before_HTML'] . '</div>';
             $after_HTML = '<div class="ssrp-after">' . $instance['after_HTML'] . '</div>';
 
+<<<<<<< HEAD
             // Don't show widget title if "hide title" setting is checked
             if ( !empty( $instance['hide_title'] ) )
                 $widget_title = '';
@@ -525,4 +554,10 @@ class SSRP_Widget extends WP_Widget {
         the_widget( 'SSRP_Widget', $instance ); 
 
     }
+=======
+
+            echo $before_widget . $before_title . $widget_title . $after_title .'<div class="textwidget">' . $before_HTML . $widget_text . $after_HTML . '</div>' . $after_widget;
+        }
+    }
+>>>>>>> 54349367f5c617bd5a4e4613e5bf5a15c45b43c7
 }
