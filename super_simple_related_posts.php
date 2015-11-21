@@ -110,7 +110,7 @@ class SSRP_Widget extends WP_Widget {
         $widget_options = array(
             'classname' => 'ssrp',
             'description' => __('A list of posts related to the current post/page.', 'ssrp') );
-        parent::WP_Widget('ssrp', __('Super Simple Related Posts', 'ssrp'), $widget_options
+        parent::__construct('ssrp', __('Super Simple Related Posts', 'ssrp'), $widget_options
         );
 
         // Set widget defaults
