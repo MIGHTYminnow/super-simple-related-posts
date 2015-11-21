@@ -1,20 +1,20 @@
 <?php
 /**
  * @package Super_Simple_Related_posts
- * @version 1.2
+ * @version 1.4
  */
 
 /**
  * Plugin Name: Super Simple Related Posts
  * Plugin URI:  http://mightyminnow.com
  * Description: A super simple plugin to output related posts based on categories, tags, or custom taxonomies.
- * Version:     1.2
+ * Version:     1.4
  * Author:      MIGHTYminnow
  * Author URI:  http://mightyminnow.com
  * License:     GPLv2+
  * Text Domain: ssrp
  * Domain Path: /languages/
- * 
+ *
  * Coded By: Mickey Kay
  *
  */
@@ -30,7 +30,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 // Useful global constants
-define( 'SSRP_VERSION', '1.2' );
+define( 'SSRP_VERSION', '1.3' );
 define( 'SSRP_URL',     plugin_dir_url( __FILE__ ) );
 define( 'SSRP_PATH',    dirname( __FILE__ ) . '/' );
 
@@ -84,21 +84,21 @@ class SSRP_Widget extends WP_Widget {
 
     /**
      * The default widget values, which is populated in __contstruct
-     * 
+     *
      * @var array
      */
     public $defaults = array();
-    
+
     /**
      * Optional array of taxonomy slugs to limit choices
      *
      * e.g. public $included_taxonomies = array('category', 'post_tag');
      * Only 'Category' and 'Tag' will appear in the widget 'Show posts related by:' drop-down <select>
-     * 
+     *
      * @var array
      */
     public $included_taxonomies = array();
-    
+
     /**
      * PHP5 constructor - initializes widget and sets defaults
      *
@@ -110,7 +110,7 @@ class SSRP_Widget extends WP_Widget {
         $widget_options = array(
             'classname' => 'ssrp',
             'description' => __('A list of posts related to the current post/page.', 'ssrp') );
-            parent::WP_Widget('ssrp', __('Super Simple Related Posts', 'ssrp'), $widget_options
+        parent::WP_Widget('ssrp', __('Super Simple Related Posts', 'ssrp'), $widget_options
         );
 
         // Set widget defaults
@@ -122,6 +122,7 @@ class SSRP_Widget extends WP_Widget {
             'orderby'                 => 'date',
             'order'                   => 'DESC',
             'number_of_posts'         => -1,
+            'include_featured_image'  => '',
             'no_posts_action'         => 'hide',
             'no_posts_message'        => __('No posts found', 'ssrp'),
             'post_heading_links'      => '',
@@ -135,7 +136,7 @@ class SSRP_Widget extends WP_Widget {
         // Add shortcode
         add_shortcode( 'ssrp', array( $this, 'ssrp_shortcode' ) );
     }
-    
+
     /**
      * Output the widget settings form
      *
@@ -150,10 +151,10 @@ class SSRP_Widget extends WP_Widget {
 
         // Output form HTML below
         ?>
-        
+
         <!-- Title -->
-        <p>  
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'ssrp'); ?></label>  
+        <p>
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'ssrp'); ?></label>
             <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" class="widefat" />
         </p>
         <p>
@@ -163,20 +164,20 @@ class SSRP_Widget extends WP_Widget {
 
         <!-- Post Types -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'post_types' ); ?>"><?php _e('Post types to include (by slug):', 'ssrp'); ?></label>  
+            <label for="<?php echo $this->get_field_id( 'post_types' ); ?>"><?php _e('Post types to include (by slug):', 'ssrp'); ?></label>
             <input type="text" id="<?php echo $this->get_field_id( 'post_types' ); ?>" name="<?php echo $this->get_field_name( 'post_types' ); ?>" value="<?php echo esc_attr( $instance['post_types'] ); ?>" class="widefat" placeholder="<?php _e('e.g. post, page, faq', 'ssrp'); ?>" />
             <small><?php _e('Comma separated, ordered list of post type slugs. Available post type slugs:', 'ssrp'); ?> <code><?php echo implode( "</code>, <code>", get_post_types() ); ?></code></small>
         </p>
 
         <!-- Taxonomy -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><?php _e('Show posts related by:', 'ssrp'); ?></label>  
+            <label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><?php _e('Show posts related by:', 'ssrp'); ?></label>
             <select id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy' ); ?>" class="widefat">
                 <?php
 
                 // Get all registered taxonomies
                 $taxonomies = get_taxonomies('', 'objects');
-                
+
                 // Output an <option> for each taxonomy
                 foreach ( $taxonomies as $taxonomy ) {
                     // Get taxonomy name and slug
@@ -197,64 +198,70 @@ class SSRP_Widget extends WP_Widget {
 
         <!-- Orderby -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e('Order posts by:', 'ssrp'); ?></label>  
+            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e('Order posts by:', 'ssrp'); ?></label>
             <select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>" class="widefat">
                 <?php
-                    // Array of orderby values
-                    $orderby_values = array(
-                        'title'         => __('Title', 'ssrp'),
-                        'name'          => __('Post Slug', 'ssrp'),
-                        'date'          => __('Date Created', 'ssrp'),
-                        'modified'      => __('Date Modified', 'ssrp'),
-                        'menu_order'    => __('Menu Order', 'ssrp'),
-                        'author'        => __('Author', 'ssrp'),
-                        'ID'            => __('Post ID', 'ssrp'),
-                        'parent'        => __('Parent ID', 'ssrp'), 
-                        'rand'          => __('Random', 'ssrp'), 
-                        'comment_count' => __('Comment Count', 'ssrp'),
-                    );
+                // Array of orderby values
+                $orderby_values = array(
+                    'title'         => __('Title', 'ssrp'),
+                    'name'          => __('Post Slug', 'ssrp'),
+                    'date'          => __('Date Created', 'ssrp'),
+                    'modified'      => __('Date Modified', 'ssrp'),
+                    'menu_order'    => __('Menu Order', 'ssrp'),
+                    'author'        => __('Author', 'ssrp'),
+                    'ID'            => __('Post ID', 'ssrp'),
+                    'parent'        => __('Parent ID', 'ssrp'),
+                    'rand'          => __('Random', 'ssrp'),
+                    'comment_count' => __('Comment Count', 'ssrp'),
+                );
 
-                    // Output <option> for each $orderby_value
-                    foreach ( $orderby_values as $orderby_value => $orderby_name ) {
-                        echo '<option value="' . $orderby_value . '" ' . selected( $instance['orderby'], $orderby_value ) . '>' . $orderby_name . '</option>' . "\n";
-                    }
+                // Output <option> for each $orderby_value
+                foreach ( $orderby_values as $orderby_value => $orderby_name ) {
+                    echo '<option value="' . $orderby_value . '" ' . selected( $instance['orderby'], $orderby_value ) . '>' . $orderby_name . '</option>' . "\n";
+                }
                 ?>
             </select>
         </p>
 
         <!-- Order -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e('Order:', 'ssrp'); ?></label>  
+            <label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e('Order:', 'ssrp'); ?></label>
             <select id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>" class="widefat">
                 <?php
-                    // Array of order values
-                    $order_values = array(
-                        'ASC'  => __('Ascending', 'ssrp'),
-                        'DESC' => __('Descending', 'ssrp'),
-                    );
+                // Array of order values
+                $order_values = array(
+                    'ASC'  => __('Ascending', 'ssrp'),
+                    'DESC' => __('Descending', 'ssrp'),
+                );
 
-                    // Output <option> for each $order_value
-                    foreach ( $order_values as $order_value => $order_name ) {
-                        echo '<option value="' . $order_value . '" ' . selected( $instance['order'], $order_value ) . '>' . $order_name . '</option>' . "\n";
-                    }
+                // Output <option> for each $order_value
+                foreach ( $order_values as $order_value => $order_name ) {
+                    echo '<option value="' . $order_value . '" ' . selected( $instance['order'], $order_value ) . '>' . $order_name . '</option>' . "\n";
+                }
                 ?>
             </select>
         </p>
 
         <!-- Number of Posts -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e('Number of posts to show:', 'ssrp'); ?></label>  
+            <label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e('Number of posts to show:', 'ssrp'); ?></label>
             <select id="<?php echo $this->get_field_id( 'number_of_posts' ); ?>" name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" class="widefat">
                 <?php
-                    // First, output the <option> for unlimited
-                    echo '<option value="-1" ' . selected( $instance['order'], $order_value ) . '>Unlimited</option>' . "\n";
+                // First, output the <option> for unlimited
+                echo '<option value="-1" ' . selected( $instance['order'], $order_value ) . '>' . __('Unlimited', 'ssrp') . '</option>' . "\n";
 
-                    // Output <option>'s for the numbers 1-100
-                    for ( $i = 1; $i <= 100; $i++ ) {
-                        echo '<option value="' . $i . '" ' . selected( $instance['number_of_posts'], $i ) . '>' . $i . '</option>' . "\n";
-                    }
+                // Output <option>'s for the numbers 1-100
+                for ( $i = 1; $i <= 100; $i++ ) {
+                    echo '<option value="' . $i . '" ' . selected( $instance['number_of_posts'], $i ) . '>' . $i . '</option>' . "\n";
+                }
                 ?>
             </select>
+        </p>
+
+        <!-- Featured Image -->
+        <p>
+            <input type="checkbox" value="1" <?php checked( 1 == $instance['include_featured_image'] ); ?> id="<?php echo $this->get_field_id( 'include_featured_image' ); ?>" name="<?php echo $this->get_field_name( 'include_featured_image' ); ?>">
+            <label for="<?php echo $this->get_field_id( 'include_featured_image' ); ?>"><?php _e('Include featured image', 'ssrp'); ?></label>
         </p>
 
         <!-- No Posts Found -->
@@ -282,23 +289,23 @@ class SSRP_Widget extends WP_Widget {
             <input type="checkbox" value="1" <?php checked( 1 == $instance['term_heading_links'] ); ?> id="<?php echo $this->get_field_id( 'term_heading_links' ); ?>" name="<?php echo $this->get_field_name( 'term_heading_links' ); ?>">
             <label for="<?php echo $this->get_field_id( 'term_heading_links' ); ?>"><?php _e('Link taxonomy term subheadings', 'ssrp'); ?></label><br />
             <input type="checkbox" value="1" <?php checked( 1 == $instance['hide_term_headings'] ); ?> id="<?php echo $this->get_field_id( 'hide_term_headings' ); ?>" name="<?php echo $this->get_field_name( 'hide_term_headings' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'hide_term_headings' ); ?>"><?php _e('Hide taxonomy term subheadings', 'ssrp'); ?></label>  
+            <label for="<?php echo $this->get_field_id( 'hide_term_headings' ); ?>"><?php _e('Hide taxonomy term subheadings', 'ssrp'); ?></label>
         </p>
 
         <!-- Before Widget -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'before_HTML' ); ?>"><?php _e('HTML before widget:', 'ssrp'); ?></label>  
+            <label for="<?php echo $this->get_field_id( 'before_HTML' ); ?>"><?php _e('HTML before widget:', 'ssrp'); ?></label>
             <textarea id="<?php echo $this->get_field_id( 'before_HTML' ); ?>" name="<?php echo $this->get_field_name( 'before_HTML' ); ?>" class="widefat" rows="6" placeholder="<?php esc_html_e('e.g. <p>Intro text goes here&hellip;</p>', 'ssrp'); ?>"><?php echo esc_textarea( $instance['before_HTML'] ); ?></textarea>
         </p>
 
         <!-- After Widget -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'after_HTML' ); ?>"><?php _e('HTML after widget:', 'ssrp'); ?></label>  
+            <label for="<?php echo $this->get_field_id( 'after_HTML' ); ?>"><?php _e('HTML after widget:', 'ssrp'); ?></label>
             <textarea id="<?php echo $this->get_field_id( 'after_HTML' ); ?>" name="<?php echo $this->get_field_name( 'after_HTML' ); ?>" class="widefat" rows="6" placeholder="<?php esc_html_e('e.g. <a href="#">Learn more &raquo;</a>', 'ssrp'); ?>"><?php echo esc_textarea( $instance['after_HTML'] ); ?></textarea>
         </p>
-    <?php
+        <?php
     }
-    
+
     /**
      * Sanitize and update widget form values
      *
@@ -326,7 +333,7 @@ class SSRP_Widget extends WP_Widget {
 
         return $new_instance;
     }
-    
+
     /**
      * Output the widget contents
      *
@@ -358,7 +365,7 @@ class SSRP_Widget extends WP_Widget {
 
         // Loop through each post type and generate output
         foreach ( $post_types as $post_type ) {
-            // Initialize term output 
+            // Initialize term output
             $term_output = '';
 
             // Loop through the taxonomy terms of the current post
@@ -378,9 +385,9 @@ class SSRP_Widget extends WP_Widget {
                             'taxonomy' => $taxonomy,
                             'field' => 'id',
                             'terms' => $term_id,
-                            )
-                        )          
-                    );
+                        )
+                    )
+                );
 
                 // Get all posts of the current post type that have the current taxonomy term
                 $posts = get_posts( $args );
@@ -397,22 +404,26 @@ class SSRP_Widget extends WP_Widget {
 
                     // Add actual link
                     $post_link = '<a href="' . get_permalink($post->ID) . '">' . $post_link . '</a>';
-                    
+
+                    // Add featured image if needed
+                    if ( isset( $instance['include_featured_image'] ) && $instance['include_featured_image'] )
+                        $post_link = '<a href="' . get_permalink($post->ID) . '">' . get_the_post_thumbnail( $post->ID ) . '</a>' . $post_link;
+
                     // Apply ssrp_post_link (outside of <a> tag)
-                    $post_output .= '<li>' . apply_filters( 'ssrp_post_link', $post_link, $post->ID ) . '</li>'; 
+                    $post_output .= '<li>' . apply_filters( 'ssrp_post_link', $post_link, $post->ID ) . '</li>';
                 }
 
                 // Only output the term heading if some related posts exist within it
                 if ( !empty( $post_output ) || 'message' == $instance['no_posts_action'] ) {
-                   
+
                     // Only output the term heading if the widget box to hide it is unchecked
                     if ( !isset( $instance['hide_term_headings'] ) || 1 != $instance['hide_term_headings'] ) {
                         $term_output .= '<h5>';
 
                         // Output post type headings as links if specified
-                        if ( isset( $instance['term_heading_links'] ) && 1 == $instance['term_heading_links'] ) 
+                        if ( isset( $instance['term_heading_links'] ) && 1 == $instance['term_heading_links'] )
                             $term_output .= '<a href="' . get_term_link( get_term_by('id', $term_id, $taxonomy) ) . '">';
-                    
+
                         // Output taxonomy term heading text  
                         $term_output .= apply_filters( 'ssrp_taxonomy_term_heading', $term_object->name, $term_object );
 
@@ -438,23 +449,23 @@ class SSRP_Widget extends WP_Widget {
             if ( !empty($term_output) ) {
                 // Open the container div
                 $output .= '<div class="post-type-' . $post_type . '">';
-                
+
                 // Only output the post type heading if the widget box to hide it is unchecked
                 if ( !isset( $instance['hide_post_type_headings'] ) || 1 != $instance['hide_post_type_headings'] ) {
                     $output .= '<h4>';
 
                     // Output post type headings as links if specified, requires 2 different treatments for regular and custom posts
                     if ( isset( $instance['post_heading_links'] ) && 1 == $instance['post_heading_links'] ) {
-                        
+
                         // 1. Regular posts - get_post_type_archive_link() doesn't work for regular posts, so get the URL manually
                         if ( 'post' == $post_type ) {
-                            
+
                             // If homepage is NOT set to be posts/blog page
                             if ( 'page' == get_option('show_on_front') )
                                 $archive_link = get_permalink( get_option('page_for_posts' ) );
 
                             // If homepage IS set to be posts/blog page
-                            else 
+                            else
                                 $archive_link = get_bloginfo('url');
                         }
 
@@ -466,10 +477,10 @@ class SSRP_Widget extends WP_Widget {
                         $output .= '<a href="' . $archive_link . '">';
 
                     }
-                    
+
                     // Output post type heading text and apply ssrp_post_type_heading filter
                     $output .= apply_filters( 'ssrp_post_type_heading', get_post_type_object($post_type)->labels->name, get_post_type_object($post_type) );
-               
+
                     // Close post type heading link if need be
                     if ( isset( $instance['post_heading_links'] ) && 1 == $instance['post_heading_links'] )
                         $output .= '</a>';
@@ -487,7 +498,7 @@ class SSRP_Widget extends WP_Widget {
 
         // If there are related posts or widget is set to display $no_posts_message 
         if ( !empty( $output ) || 'message' == $instance['no_posts_action'] ) {
-           
+
             // If there are no related posts, output the $no_posts_message
             if ( empty( $output ) )
                 $output = '<div class="no-posts-message">' . $instance['no_posts_message'] . '</div>';
@@ -503,7 +514,7 @@ class SSRP_Widget extends WP_Widget {
             // Don't show widget title if "hide title" setting is checked
             if ( !empty( $instance['hide_title'] ) )
                 $widget_title = '';
-            
+
 
 
             echo $before_widget . $widget_title .'<div class="textwidget">' . $before_HTML . $widget_text . $after_HTML . '</div>' . $after_widget;
@@ -522,7 +533,7 @@ class SSRP_Widget extends WP_Widget {
 
         $instance = wp_parse_args( $atts, $this->defaults );
 
-        the_widget( 'SSRP_Widget', $instance ); 
+        the_widget( 'SSRP_Widget', $instance );
 
     }
 }
