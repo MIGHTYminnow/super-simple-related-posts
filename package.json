@@ -1,0 +1,25 @@
+{
+  "title": "Super Simple Related Posts",
+  "description": "A super simple widget to output related posts based on categories, tags, or custom taxonomies.",
+  "version": "1.5",
+  "homepage": "http://wordpress.org/plugins/super-simple-related-posts",
+  "author": {
+    "name": "Mickey Kay",
+    "email": "mickey@mickeykaycreative.com",
+    "url": "http://mickeykaycreative.com?utm_source=super-simple-related-posts&utm_medium=plugin-repo&utm_campaign=WordPress%20Plugins"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "load-grunt-tasks": "latest",
+    "grunt-dev-update": "latest",
+    "grunt-prompt": "latest",
+    "grunt-text-replace": "latest",
+    "grunt-wp-readme-to-markdown": "latest",
+    "grunt-wp-i18n": "latest",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-watch": "~0.6.1"
+  },
+  "keywords": []
+}

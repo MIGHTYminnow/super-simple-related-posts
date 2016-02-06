@@ -1,21 +1,21 @@
-=== Super Simple Related Posts ===
-Contributors:      McGuive7, MIGHTYminnow
-Donate link:       http://mightyminnow.com
-Tags:              related, posts, content, category, tag, taxonomy, widget
-Requires at least: 3.0
-Tested up to:      3.9.1
-Stable tag:        1.5
-License:           GPLv2 or later
-License URI:       http://www.gnu.org/licenses/gpl-2.0.html
+# Super Simple Related Posts #
+**Contributors:**      McGuive7, MIGHTYminnow  
+**Donate link:**       http://mightyminnow.com  
+**Tags:**              related, posts, content, category, tag, taxonomy, widget  
+**Requires at least:** 3.0  
+**Tested up to:**      3.9.1  
+**Stable tag:**        1.5  
+**License:**           GPLv2 or later  
+**License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
 
 A super simple widget to output related posts based on categories, tags, or custom taxonomies.
 
-== Description ==
+## Description ##
 Super Simple Related Posts gives you both a widget and a shortcode to output lists of posts related to the current post. You get to decide how the posts are related (categories, tags, custom taxonomies), what to show (posts, pages, custom post types), and a whole lot more. The widget is configurable via **Appearance > Settings** and more info on shortcode usage is provided below.
 
 A [**MIGHTYminnow**](http://mightyminnow.com) plugin.
 
-= Features =
+### Features ###
 There are tons of related posts plugins out there - here's why Super Simple Related Posts is special:
 
 * **Speed**
@@ -25,7 +25,7 @@ There are tons of related posts plugins out there - here's why Super Simple Rela
   As it's name implies, Super Simple Related Posts keeps things as straightforward as possible. This means that you get a simple widget with easily configurable settings to let you do what you gotta' do.
 
 
-= Settings =
+### Settings ###
 Whether you use widgets or shortcodes, you can easily configure Super Simple Related Posts with the following settings. These settings are directly configurable in each widget, and can also be controlled with attributes when using shortcodes (for more on shortcode settings, see the "Shortcode" section below).
 
 * **Title**
@@ -59,7 +59,7 @@ Whether you use widgets or shortcodes, you can easily configure Super Simple Rel
   A handy feature to let you add custom HTML before and after the widget, in case you want any intro or concluding text.
 
 
-= Shortcode =
+### Shortcode ###
 In addition to using SSRP widgets, you can also use the `[ssrp]` shortcode. Here's an example:
 
 `[ssrp title="My Related Posts" post_types="post, page" number_of_posts="3"]`
@@ -85,7 +85,7 @@ Here is a list of the available shortcode attributes, which correlate to the set
 * `after_HTML="Any HTML/text"`
 
 
-= Filters =
+### Filters ###
 Super Simple Related Posts also provides you with a handy set of filters you can use for your own development and customization:
 
 * **`ssrp_post_title( $post_title, $post_id )`**
@@ -107,61 +107,65 @@ Super Simple Related Posts also provides you with a handy set of filters you can
 Banner photo by [Susannah Kay](http://susannahkay.com).
 
 
-== Installation ==
+## Installation ##
 
-= Manual Installation =
+### Manual Installation ###
 
 1. Upload the entire `/super-simple-related-posts-widget` directory to the `/wp-content/plugins/` directory.
 2. Activate Super Simple Related Posts Widget through the 'Plugins' menu in WordPress.
 
 
-== Screenshots ==
+## Screenshots ##
 
-1. The Super Simple Related Posts widget.
-2. Sample output showing posts, pages, and custom post type 'Case Studies' related by Categories.
+### 1. The Super Simple Related Posts widget. ###
+![The Super Simple Related Posts widget.]()
 
-== Changelog ==
+### 2. Sample output showing posts, pages, and custom post type 'Case Studies' related by Categories. ###
+![Sample output showing posts, pages, and custom post type 'Case Studies' related by Categories.]()
 
-= 1.5 =
+
+## Changelog ##
+
+### 1.5 ###
 * Add functionality to exclude duplicate posts that would otherwise be included across multiple taxonomy terms.
 * Add in Grunt build for improved output.
 
-= 1.4 =
+### 1.4 ###
 * Add __() translation call for previously untranslated string.
 * Updated .po/.mo files.
 
-= 1.3 =
+### 1.3 ###
 * Added ability to include featured images
 
-= 1.2 =
+### 1.2 ###
 * Added shortcode functionality!
 * Add ability to hide the title (hide_title).
 
-= 1.1 =
+### 1.1 ###
 * Added missing closting bracket } to main PHP file that was causing PHP end of file error and duplicated post type output.
 
-= 1.0 =
+### 1.0 ###
 * First release
 
-== Upgrade Notice ==
+## Upgrade Notice ##
 
-= 1.5 =
+### 1.5 ###
 * Add functionality to exclude duplicate posts that would otherwise be included across multiple taxonomy terms.
 * Add in Grunt build for improved output.
 
-= 1.4 =
+### 1.4 ###
 * Add __() translation call for previously untranslated string.
 * Updated .po/.mo files.
 
-= 1.3 =
+### 1.3 ###
 * Added ability to include featured images
 
-= 1.2 =
+### 1.2 ###
 * Added shortcode functionality!
 * Add ability to hide the title (hide_title).
 
-= 1.1 =
+### 1.1 ###
 * Added missing closting bracket } to main PHP file that was causing PHP end of file error and duplicated post type output.
 
-= 1.0 =
+### 1.0 ###
 First Release

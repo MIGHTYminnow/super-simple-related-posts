@@ -8,7 +8,7 @@
  * Plugin Name: Super Simple Related Posts
  * Plugin URI:  http://mightyminnow.com
  * Description: A super simple plugin to output related posts based on categories, tags, or custom taxonomies.
- * Version:     1.4
+ * Version:     1.5
  * Author:      MIGHTYminnow
  * Author URI:  http://mightyminnow.com
  * License:     GPLv2+
@@ -123,6 +123,7 @@ class SSRP_Widget extends WP_Widget {
             'order'                   => 'DESC',
             'number_of_posts'         => -1,
             'include_featured_image'  => '',
+            'exclude_duplicates'      => '',
             'no_posts_action'         => 'hide',
             'no_posts_message'        => __('No posts found', 'ssrp'),
             'post_heading_links'      => '',
@@ -264,6 +265,12 @@ class SSRP_Widget extends WP_Widget {
             <label for="<?php echo $this->get_field_id( 'include_featured_image' ); ?>"><?php _e('Include featured image', 'ssrp'); ?></label>
         </p>
 
+        <!-- Duplicates -->
+        <p>
+            <input type="checkbox" value="1" <?php checked( 1 == $instance['exclude_duplicates'] ); ?> id="<?php echo $this->get_field_id( 'exclude_duplicates' ); ?>" name="<?php echo $this->get_field_name( 'exclude_duplicates' ); ?>">
+            <label for="<?php echo $this->get_field_id( 'exclude_duplicates' ); ?>"><?php _e('Exclude duplicates', 'ssrp'); ?></label>
+        </p>
+
         <!-- No Posts Found -->
         <p>
             <?php _e('If there are no related posts:', 'ssrp') ?><br />
@@ -360,6 +367,9 @@ class SSRP_Widget extends WP_Widget {
         $taxonomy = $instance['taxonomy'];
         $post_types = explode( ',', str_replace( ' ', '', $instance['post_types'] ) );
 
+        // Set up array to track included posts to exclude them from being included twice.
+        $included_posts = array( get_the_ID() );
+
         // Get the taxonomy terms of the current post/page for the specified taxonomy
         $post_terms = wp_get_post_terms( get_the_ID(), $taxonomy );
 
@@ -373,13 +383,14 @@ class SSRP_Widget extends WP_Widget {
                 // Get the ID of the term object
                 $term_id = $term_object->term_id;
 
+
                 // Set the arguments for the following get_posts() call
                 $args = array(
                     'posts_per_page'            => $instance['number_of_posts'],
                     'orderby'                   => $instance['orderby'],
                     'order'                     => $instance['order'],
                     'post_type'                 => $post_type,
-                    'exclude'                   => get_the_ID(), /* Exclude the current page from these lists */
+                    'exclude'                   => $included_posts,
                     'tax_query' => array(
                         array(
                             'taxonomy' => $taxonomy,
@@ -398,8 +409,13 @@ class SSRP_Widget extends WP_Widget {
 
                 // Output posts for this post type and taxonomy
                 foreach ( $posts as $post ) {
+
+                	if ( ! empty( $instance['exclude_duplicates'] ) ) {
+                		$included_posts[] = $post->ID;
+                	}
+
                     // Apply the_title and ssrp_post_title filters (within <a> tag)
-                    $post_link = apply_filters( 'the_title', $post->post_title, $post->ID);
+                    $post_link = apply_filters( 'the_title', $post->post_title . " {$post->ID}", $post->ID);
                     $post_link = apply_filters( 'ssrp_post_title', $post_link, $post->ID);
 
                     // Add actual link
@@ -424,7 +440,7 @@ class SSRP_Widget extends WP_Widget {
                         if ( isset( $instance['term_heading_links'] ) && 1 == $instance['term_heading_links'] )
                             $term_output .= '<a href="' . get_term_link( get_term_by('id', $term_id, $taxonomy) ) . '">';
 
-                        // Output taxonomy term heading text  
+                        // Output taxonomy term heading text
                         $term_output .= apply_filters( 'ssrp_taxonomy_term_heading', $term_object->name, $term_object );
 
                         // Close taxonomy term heading link if specified
@@ -496,7 +512,7 @@ class SSRP_Widget extends WP_Widget {
 
         } /* End post type loop */
 
-        // If there are related posts or widget is set to display $no_posts_message 
+        // If there are related posts or widget is set to display $no_posts_message
         if ( !empty( $output ) || 'message' == $instance['no_posts_action'] ) {
 
             // If there are no related posts, output the $no_posts_message
