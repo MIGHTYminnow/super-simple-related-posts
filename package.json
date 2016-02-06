@@ -1,7 +1,7 @@
 {
   "title": "Super Simple Related Posts",
   "description": "A super simple widget to output related posts based on categories, tags, or custom taxonomies.",
-  "version": "1.5",
+  "version": "1.5.1",
   "homepage": "http://wordpress.org/plugins/super-simple-related-posts",
   "author": {
     "name": "Mickey Kay",

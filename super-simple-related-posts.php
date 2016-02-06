@@ -8,7 +8,7 @@
  * Plugin Name: Super Simple Related Posts
  * Plugin URI:  http://mightyminnow.com
  * Description: A super simple plugin to output related posts based on categories, tags, or custom taxonomies.
- * Version:     1.5
+ * Version:     1.5.1
  * Author:      MIGHTYminnow
  * Author URI:  http://mightyminnow.com
  * License:     GPLv2+
@@ -25,7 +25,7 @@
 
 // Make sure we don't expose any info if called directly
 if ( !function_exists( 'add_action' ) ) {
-    _e('Hi there!  I\'m just a plugin, not much I can do when called directly.', 'ssrp');
+    _e('Hi there!  I\'m just a plugin, not much I can do when called directly.', 'super-simple-related-posts');
     exit;
 }
 
@@ -109,8 +109,8 @@ class SSRP_Widget extends WP_Widget {
         // Set widget options
         $widget_options = array(
             'classname' => 'ssrp',
-            'description' => __('A list of posts related to the current post/page.', 'ssrp') );
-        parent::__construct('ssrp', __('Super Simple Related Posts', 'ssrp'), $widget_options
+            'description' => __('A list of posts related to the current post/page.', 'super-simple-related-posts') );
+        parent::__construct('ssrp', __('Super Simple Related Posts', 'super-simple-related-posts'), $widget_options
         );
 
         // Set widget defaults
@@ -125,7 +125,7 @@ class SSRP_Widget extends WP_Widget {
             'include_featured_image'  => '',
             'exclude_duplicates'      => '',
             'no_posts_action'         => 'hide',
-            'no_posts_message'        => __('No posts found', 'ssrp'),
+            'no_posts_message'        => __('No posts found', 'super-simple-related-posts'),
             'post_heading_links'      => '',
             'hide_post_type_headings' => '',
             'term_heading_links'      => '',
@@ -155,24 +155,24 @@ class SSRP_Widget extends WP_Widget {
 
         <!-- Title -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'super-simple-related-posts'); ?></label>
             <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" class="widefat" />
         </p>
         <p>
             <input type="checkbox" value="1" <?php checked( 1 == $instance['hide_title'] ); ?> id="<?php echo $this->get_field_id( 'hide_title' ); ?>" name="<?php echo $this->get_field_name( 'hide_title' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'hide_title' ); ?>"><?php _e('Hide the widget title', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'hide_title' ); ?>"><?php _e('Hide the widget title', 'super-simple-related-posts'); ?></label>
         </p>
 
         <!-- Post Types -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'post_types' ); ?>"><?php _e('Post types to include (by slug):', 'ssrp'); ?></label>
-            <input type="text" id="<?php echo $this->get_field_id( 'post_types' ); ?>" name="<?php echo $this->get_field_name( 'post_types' ); ?>" value="<?php echo esc_attr( $instance['post_types'] ); ?>" class="widefat" placeholder="<?php _e('e.g. post, page, faq', 'ssrp'); ?>" />
-            <small><?php _e('Comma separated, ordered list of post type slugs. Available post type slugs:', 'ssrp'); ?> <code><?php echo implode( "</code>, <code>", get_post_types() ); ?></code></small>
+            <label for="<?php echo $this->get_field_id( 'post_types' ); ?>"><?php _e('Post types to include (by slug):', 'super-simple-related-posts'); ?></label>
+            <input type="text" id="<?php echo $this->get_field_id( 'post_types' ); ?>" name="<?php echo $this->get_field_name( 'post_types' ); ?>" value="<?php echo esc_attr( $instance['post_types'] ); ?>" class="widefat" placeholder="<?php _e('e.g. post, page, faq', 'super-simple-related-posts'); ?>" />
+            <small><?php _e('Comma separated, ordered list of post type slugs. Available post type slugs:', 'super-simple-related-posts'); ?> <code><?php echo implode( "</code>, <code>", get_post_types() ); ?></code></small>
         </p>
 
         <!-- Taxonomy -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><?php _e('Show posts related by:', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><?php _e('Show posts related by:', 'super-simple-related-posts'); ?></label>
             <select id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy' ); ?>" class="widefat">
                 <?php
 
@@ -199,21 +199,21 @@ class SSRP_Widget extends WP_Widget {
 
         <!-- Orderby -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e('Order posts by:', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e('Order posts by:', 'super-simple-related-posts'); ?></label>
             <select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>" class="widefat">
                 <?php
                 // Array of orderby values
                 $orderby_values = array(
-                    'title'         => __('Title', 'ssrp'),
-                    'name'          => __('Post Slug', 'ssrp'),
-                    'date'          => __('Date Created', 'ssrp'),
-                    'modified'      => __('Date Modified', 'ssrp'),
-                    'menu_order'    => __('Menu Order', 'ssrp'),
-                    'author'        => __('Author', 'ssrp'),
-                    'ID'            => __('Post ID', 'ssrp'),
-                    'parent'        => __('Parent ID', 'ssrp'),
-                    'rand'          => __('Random', 'ssrp'),
-                    'comment_count' => __('Comment Count', 'ssrp'),
+                    'title'         => __('Title', 'super-simple-related-posts'),
+                    'name'          => __('Post Slug', 'super-simple-related-posts'),
+                    'date'          => __('Date Created', 'super-simple-related-posts'),
+                    'modified'      => __('Date Modified', 'super-simple-related-posts'),
+                    'menu_order'    => __('Menu Order', 'super-simple-related-posts'),
+                    'author'        => __('Author', 'super-simple-related-posts'),
+                    'ID'            => __('Post ID', 'super-simple-related-posts'),
+                    'parent'        => __('Parent ID', 'super-simple-related-posts'),
+                    'rand'          => __('Random', 'super-simple-related-posts'),
+                    'comment_count' => __('Comment Count', 'super-simple-related-posts'),
                 );
 
                 // Output <option> for each $orderby_value
@@ -226,13 +226,13 @@ class SSRP_Widget extends WP_Widget {
 
         <!-- Order -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e('Order:', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e('Order:', 'super-simple-related-posts'); ?></label>
             <select id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>" class="widefat">
                 <?php
                 // Array of order values
                 $order_values = array(
-                    'ASC'  => __('Ascending', 'ssrp'),
-                    'DESC' => __('Descending', 'ssrp'),
+                    'ASC'  => __('Ascending', 'super-simple-related-posts'),
+                    'DESC' => __('Descending', 'super-simple-related-posts'),
                 );
 
                 // Output <option> for each $order_value
@@ -245,11 +245,11 @@ class SSRP_Widget extends WP_Widget {
 
         <!-- Number of Posts -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e('Number of posts to show:', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e('Number of posts to show:', 'super-simple-related-posts'); ?></label>
             <select id="<?php echo $this->get_field_id( 'number_of_posts' ); ?>" name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" class="widefat">
                 <?php
                 // First, output the <option> for unlimited
-                echo '<option value="-1" ' . selected( $instance['order'], $order_value ) . '>' . __('Unlimited', 'ssrp') . '</option>' . "\n";
+                echo '<option value="-1" ' . selected( $instance['order'], $order_value ) . '>' . __('Unlimited', 'super-simple-related-posts') . '</option>' . "\n";
 
                 // Output <option>'s for the numbers 1-100
                 for ( $i = 1; $i <= 100; $i++ ) {
@@ -262,53 +262,53 @@ class SSRP_Widget extends WP_Widget {
         <!-- Featured Image -->
         <p>
             <input type="checkbox" value="1" <?php checked( 1 == $instance['include_featured_image'] ); ?> id="<?php echo $this->get_field_id( 'include_featured_image' ); ?>" name="<?php echo $this->get_field_name( 'include_featured_image' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'include_featured_image' ); ?>"><?php _e('Include featured image', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'include_featured_image' ); ?>"><?php _e('Include featured image', 'super-simple-related-posts'); ?></label>
         </p>
 
         <!-- Duplicates -->
         <p>
             <input type="checkbox" value="1" <?php checked( 1 == $instance['exclude_duplicates'] ); ?> id="<?php echo $this->get_field_id( 'exclude_duplicates' ); ?>" name="<?php echo $this->get_field_name( 'exclude_duplicates' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'exclude_duplicates' ); ?>"><?php _e('Exclude duplicates', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'exclude_duplicates' ); ?>"><?php _e('Exclude duplicates', 'super-simple-related-posts'); ?></label>
         </p>
 
         <!-- No Posts Found -->
         <p>
-            <?php _e('If there are no related posts:', 'ssrp') ?><br />
+            <?php _e('If there are no related posts:', 'super-simple-related-posts') ?><br />
             <input type="radio" value="hide" <?php checked( 'hide' == $instance['no_posts_action'] ); ?> id="<?php echo $this->get_field_id( 'no_posts_action' ); ?>-hide" name="<?php echo $this->get_field_name( 'no_posts_action' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'no_posts_action' ); ?>-hide"><?php _e('Hide the content/widget', 'ssrp'); ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'no_posts_action' ); ?>-hide"><?php _e('Hide the content/widget', 'super-simple-related-posts'); ?></label><br />
             <input type="radio" value="message" <?php checked( 'message' == $instance['no_posts_action'] ); ?> id="<?php echo $this->get_field_id( 'no_posts_action' ); ?>-message" name="<?php echo $this->get_field_name( 'no_posts_action' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'no_posts_action' ); ?>-message"><?php _e('Show the following message:', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'no_posts_action' ); ?>-message"><?php _e('Show the following message:', 'super-simple-related-posts'); ?></label>
             <input type="text" id="<?php echo $this->get_field_id( 'no_posts_message' ); ?>" name="<?php echo $this->get_field_name( 'no_posts_message' ); ?>" value="<?php echo esc_attr( $instance['no_posts_message'] ); ?>" class="widefat" />
         </p>
 
         <!-- Post Type Headings -->
         <p>
-            <?php _e('Headings (post types):', 'ssrp') ?><br />
+            <?php _e('Headings (post types):', 'super-simple-related-posts') ?><br />
             <input type="checkbox" value="1" <?php checked( 1 == $instance['post_heading_links'] ); ?> id="<?php echo $this->get_field_id( 'post_heading_links' ); ?>" name="<?php echo $this->get_field_name( 'post_heading_links' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'post_heading_links' ); ?>"><?php _e('Link post type headings', 'ssrp'); ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'post_heading_links' ); ?>"><?php _e('Link post type headings', 'super-simple-related-posts'); ?></label><br />
             <input type="checkbox" value="1" <?php checked( 1 == $instance['hide_post_type_headings'] ); ?> id="<?php echo $this->get_field_id( 'hide_post_type_headings' ); ?>" name="<?php echo $this->get_field_name( 'hide_post_type_headings' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'hide_post_type_headings' ); ?>"><?php _e('Hide post type headings', 'ssrp'); ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'hide_post_type_headings' ); ?>"><?php _e('Hide post type headings', 'super-simple-related-posts'); ?></label><br />
         </p>
 
         <!-- Taxonomy Term Headings -->
         <p>
-            <?php _e('Subheadings (taxonomy terms):', 'ssrp') ?><br />
+            <?php _e('Subheadings (taxonomy terms):', 'super-simple-related-posts') ?><br />
             <input type="checkbox" value="1" <?php checked( 1 == $instance['term_heading_links'] ); ?> id="<?php echo $this->get_field_id( 'term_heading_links' ); ?>" name="<?php echo $this->get_field_name( 'term_heading_links' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'term_heading_links' ); ?>"><?php _e('Link taxonomy term subheadings', 'ssrp'); ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'term_heading_links' ); ?>"><?php _e('Link taxonomy term subheadings', 'super-simple-related-posts'); ?></label><br />
             <input type="checkbox" value="1" <?php checked( 1 == $instance['hide_term_headings'] ); ?> id="<?php echo $this->get_field_id( 'hide_term_headings' ); ?>" name="<?php echo $this->get_field_name( 'hide_term_headings' ); ?>">
-            <label for="<?php echo $this->get_field_id( 'hide_term_headings' ); ?>"><?php _e('Hide taxonomy term subheadings', 'ssrp'); ?></label>
+            <label for="<?php echo $this->get_field_id( 'hide_term_headings' ); ?>"><?php _e('Hide taxonomy term subheadings', 'super-simple-related-posts'); ?></label>
         </p>
 
         <!-- Before Widget -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'before_HTML' ); ?>"><?php _e('HTML before widget:', 'ssrp'); ?></label>
-            <textarea id="<?php echo $this->get_field_id( 'before_HTML' ); ?>" name="<?php echo $this->get_field_name( 'before_HTML' ); ?>" class="widefat" rows="6" placeholder="<?php esc_html_e('e.g. <p>Intro text goes here&hellip;</p>', 'ssrp'); ?>"><?php echo esc_textarea( $instance['before_HTML'] ); ?></textarea>
+            <label for="<?php echo $this->get_field_id( 'before_HTML' ); ?>"><?php _e('HTML before widget:', 'super-simple-related-posts'); ?></label>
+            <textarea id="<?php echo $this->get_field_id( 'before_HTML' ); ?>" name="<?php echo $this->get_field_name( 'before_HTML' ); ?>" class="widefat" rows="6" placeholder="<?php esc_html_e('e.g. <p>Intro text goes here&hellip;</p>', 'super-simple-related-posts'); ?>"><?php echo esc_textarea( $instance['before_HTML'] ); ?></textarea>
         </p>
 
         <!-- After Widget -->
         <p>
-            <label for="<?php echo $this->get_field_id( 'after_HTML' ); ?>"><?php _e('HTML after widget:', 'ssrp'); ?></label>
-            <textarea id="<?php echo $this->get_field_id( 'after_HTML' ); ?>" name="<?php echo $this->get_field_name( 'after_HTML' ); ?>" class="widefat" rows="6" placeholder="<?php esc_html_e('e.g. <a href="#">Learn more &raquo;</a>', 'ssrp'); ?>"><?php echo esc_textarea( $instance['after_HTML'] ); ?></textarea>
+            <label for="<?php echo $this->get_field_id( 'after_HTML' ); ?>"><?php _e('HTML after widget:', 'super-simple-related-posts'); ?></label>
+            <textarea id="<?php echo $this->get_field_id( 'after_HTML' ); ?>" name="<?php echo $this->get_field_name( 'after_HTML' ); ?>" class="widefat" rows="6" placeholder="<?php esc_html_e('e.g. <a href="#">Learn more &raquo;</a>', 'super-simple-related-posts'); ?>"><?php echo esc_textarea( $instance['after_HTML'] ); ?></textarea>
         </p>
         <?php
     }
@@ -363,7 +363,7 @@ class SSRP_Widget extends WP_Widget {
         $output = '';
 
         // Get the widget title, taxonomy, and post types to be included
-        $title = ( $instance['title'] ? $instance['title'] : __('Related Posts', 'ssrp') );
+        $title = ( $instance['title'] ? $instance['title'] : __('Related Posts', 'super-simple-related-posts') );
         $taxonomy = $instance['taxonomy'];
         $post_types = explode( ',', str_replace( ' ', '', $instance['post_types'] ) );
 
@@ -415,7 +415,7 @@ class SSRP_Widget extends WP_Widget {
                 	}
 
                     // Apply the_title and ssrp_post_title filters (within <a> tag)
-                    $post_link = apply_filters( 'the_title', $post->post_title . " {$post->ID}", $post->ID);
+                    $post_link = apply_filters( 'the_title', $post->post_title, $post->ID);
                     $post_link = apply_filters( 'ssrp_post_title', $post_link, $post->ID);
 
                     // Add actual link

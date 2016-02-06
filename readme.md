@@ -4,7 +4,7 @@
 **Tags:**              related, posts, content, category, tag, taxonomy, widget  
 **Requires at least:** 3.0  
 **Tested up to:**      3.9.1  
-**Stable tag:**        1.5  
+**Stable tag:**        1.5.1  
 **License:**           GPLv2 or later  
 **License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -126,9 +126,13 @@ Banner photo by [Susannah Kay](http://susannahkay.com).
 
 ## Changelog ##
 
+### 1.5.1 ###
+* Remove debugging ID's appearing after post links.
+
 ### 1.5 ###
 * Add functionality to exclude duplicate posts that would otherwise be included across multiple taxonomy terms.
 * Add in Grunt build for improved output.
+* Improve translations.
 
 ### 1.4 ###
 * Add __() translation call for previously untranslated string.
@@ -149,9 +153,13 @@ Banner photo by [Susannah Kay](http://susannahkay.com).
 
 ## Upgrade Notice ##
 
+### 1.5.1 ###
+* Remove debugging ID's appearing after post links.
+
 ### 1.5 ###
 * Add functionality to exclude duplicate posts that would otherwise be included across multiple taxonomy terms.
 * Add in Grunt build for improved output.
+* Improve translations.
 
 ### 1.4 ###
 * Add __() translation call for previously untranslated string.
