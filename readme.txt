@@ -4,7 +4,7 @@ Donate link:       http://mightyminnow.com
 Tags:              related, posts, content, category, tag, taxonomy, widget
 Requires at least: 3.0
 Tested up to:      3.9.1
-Stable tag:        1.5.2
+Stable tag:        1.5.3
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,9 @@ Banner photo by [Susannah Kay](http://susannahkay.com).
 
 == Changelog ==
 
+= 1.5.3 =
+* Update faulty translation slugs.
+
 = 1.5.2 =
 * Remove duplicate plugin file.
 
@@ -151,6 +154,9 @@ Banner photo by [Susannah Kay](http://susannahkay.com).
 * First release
 
 == Upgrade Notice ==
+
+= 1.5.3 =
+* Update faulty translation slugs.
 
 = 1.5.2 =
 * Remove duplicate plugin file.

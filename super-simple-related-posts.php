@@ -8,11 +8,11 @@
  * Plugin Name: Super Simple Related Posts
  * Plugin URI:  http://mightyminnow.com
  * Description: A super simple plugin to output related posts based on categories, tags, or custom taxonomies.
- * Version:     1.5.2
+ * Version:     1.5.3
  * Author:      MIGHTYminnow
  * Author URI:  http://mightyminnow.com
  * License:     GPLv2+
- * Text Domain: ssrp
+ * Text Domain: super-simple-related-posts
  * Domain Path: /languages/
  *
  * Coded By: Mickey Kay
@@ -70,7 +70,7 @@ function ssrp_init() {
     register_widget( 'SSRP_Widget');
 
     // Load plugin text domain
-    load_plugin_textdomain( 'ssrp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+    load_plugin_textdomain( 'super-simple-related-posts', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 add_action( 'widgets_init', 'ssrp_init' );
 

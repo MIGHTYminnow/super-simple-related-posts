@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Super Simple Related Posts 1.5.2\n"
+"Project-Id-Version: Super Simple Related Posts 1.5.3\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/super-simple-related-posts\n"
-"POT-Creation-Date: 2016-02-15 19:17:00+00:00\n"
+"POT-Creation-Date: 2016-02-15 20:11:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,6 +23,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:28
 #: svn/tags/1.5.1/super-simple-related-posts.php:28
 #: svn/tags/1.5.1/super_simple_related_posts.php:28
+#: svn/tags/1.5.2/super-simple-related-posts.php:28
 #: svn/trunk/super-simple-related-posts.php:28
 msgid "Hi there!  I'm just a plugin, not much I can do when called directly."
 msgstr ""
@@ -36,6 +37,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:112
 #: svn/tags/1.5.1/super-simple-related-posts.php:112
 #: svn/tags/1.5.1/super_simple_related_posts.php:112
+#: svn/tags/1.5.2/super-simple-related-posts.php:112
 #: svn/trunk/super-simple-related-posts.php:112
 msgid "A list of posts related to the current post/page."
 msgstr ""
@@ -53,6 +55,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:127
 #: svn/tags/1.5.1/super-simple-related-posts.php:128
 #: svn/tags/1.5.1/super_simple_related_posts.php:127
+#: svn/tags/1.5.2/super-simple-related-posts.php:128
 #: svn/trunk/super-simple-related-posts.php:128
 msgid "No posts found"
 msgstr ""
@@ -66,6 +69,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:157
 #: svn/tags/1.5.1/super-simple-related-posts.php:158
 #: svn/tags/1.5.1/super_simple_related_posts.php:157
+#: svn/tags/1.5.2/super-simple-related-posts.php:158
 #: svn/trunk/super-simple-related-posts.php:158
 msgid "Title:"
 msgstr ""
@@ -78,6 +82,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:162
 #: svn/tags/1.5.1/super-simple-related-posts.php:163
 #: svn/tags/1.5.1/super_simple_related_posts.php:162
+#: svn/tags/1.5.2/super-simple-related-posts.php:163
 #: svn/trunk/super-simple-related-posts.php:163
 msgid "Hide the widget title"
 msgstr ""
@@ -91,6 +96,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:167
 #: svn/tags/1.5.1/super-simple-related-posts.php:168
 #: svn/tags/1.5.1/super_simple_related_posts.php:167
+#: svn/tags/1.5.2/super-simple-related-posts.php:168
 #: svn/trunk/super-simple-related-posts.php:168
 msgid "Post types to include (by slug):"
 msgstr ""
@@ -104,6 +110,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:168
 #: svn/tags/1.5.1/super-simple-related-posts.php:169
 #: svn/tags/1.5.1/super_simple_related_posts.php:168
+#: svn/tags/1.5.2/super-simple-related-posts.php:169
 #: svn/trunk/super-simple-related-posts.php:169
 msgid "e.g. post, page, faq"
 msgstr ""
@@ -117,6 +124,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:169
 #: svn/tags/1.5.1/super-simple-related-posts.php:170
 #: svn/tags/1.5.1/super_simple_related_posts.php:169
+#: svn/tags/1.5.2/super-simple-related-posts.php:170
 #: svn/trunk/super-simple-related-posts.php:170
 msgid "Comma separated, ordered list of post type slugs. Available post type slugs:"
 msgstr ""
@@ -130,6 +138,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:174
 #: svn/tags/1.5.1/super-simple-related-posts.php:175
 #: svn/tags/1.5.1/super_simple_related_posts.php:174
+#: svn/tags/1.5.2/super-simple-related-posts.php:175
 #: svn/trunk/super-simple-related-posts.php:175
 msgid "Show posts related by:"
 msgstr ""
@@ -143,6 +152,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:201
 #: svn/tags/1.5.1/super-simple-related-posts.php:202
 #: svn/tags/1.5.1/super_simple_related_posts.php:201
+#: svn/tags/1.5.2/super-simple-related-posts.php:202
 #: svn/trunk/super-simple-related-posts.php:202
 msgid "Order posts by:"
 msgstr ""
@@ -156,6 +166,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:206
 #: svn/tags/1.5.1/super-simple-related-posts.php:207
 #: svn/tags/1.5.1/super_simple_related_posts.php:206
+#: svn/tags/1.5.2/super-simple-related-posts.php:207
 #: svn/trunk/super-simple-related-posts.php:207
 msgid "Title"
 msgstr ""
@@ -169,6 +180,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:207
 #: svn/tags/1.5.1/super-simple-related-posts.php:208
 #: svn/tags/1.5.1/super_simple_related_posts.php:207
+#: svn/tags/1.5.2/super-simple-related-posts.php:208
 #: svn/trunk/super-simple-related-posts.php:208
 msgid "Post Slug"
 msgstr ""
@@ -182,6 +194,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:208
 #: svn/tags/1.5.1/super-simple-related-posts.php:209
 #: svn/tags/1.5.1/super_simple_related_posts.php:208
+#: svn/tags/1.5.2/super-simple-related-posts.php:209
 #: svn/trunk/super-simple-related-posts.php:209
 msgid "Date Created"
 msgstr ""
@@ -195,6 +208,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:209
 #: svn/tags/1.5.1/super-simple-related-posts.php:210
 #: svn/tags/1.5.1/super_simple_related_posts.php:209
+#: svn/tags/1.5.2/super-simple-related-posts.php:210
 #: svn/trunk/super-simple-related-posts.php:210
 msgid "Date Modified"
 msgstr ""
@@ -208,6 +222,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:210
 #: svn/tags/1.5.1/super-simple-related-posts.php:211
 #: svn/tags/1.5.1/super_simple_related_posts.php:210
+#: svn/tags/1.5.2/super-simple-related-posts.php:211
 #: svn/trunk/super-simple-related-posts.php:211
 msgid "Menu Order"
 msgstr ""
@@ -221,6 +236,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:211
 #: svn/tags/1.5.1/super-simple-related-posts.php:212
 #: svn/tags/1.5.1/super_simple_related_posts.php:211
+#: svn/tags/1.5.2/super-simple-related-posts.php:212
 #: svn/trunk/super-simple-related-posts.php:212
 msgid "Author"
 msgstr ""
@@ -234,6 +250,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:212
 #: svn/tags/1.5.1/super-simple-related-posts.php:213
 #: svn/tags/1.5.1/super_simple_related_posts.php:212
+#: svn/tags/1.5.2/super-simple-related-posts.php:213
 #: svn/trunk/super-simple-related-posts.php:213
 msgid "Post ID"
 msgstr ""
@@ -247,6 +264,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:213
 #: svn/tags/1.5.1/super-simple-related-posts.php:214
 #: svn/tags/1.5.1/super_simple_related_posts.php:213
+#: svn/tags/1.5.2/super-simple-related-posts.php:214
 #: svn/trunk/super-simple-related-posts.php:214
 msgid "Parent ID"
 msgstr ""
@@ -260,6 +278,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:214
 #: svn/tags/1.5.1/super-simple-related-posts.php:215
 #: svn/tags/1.5.1/super_simple_related_posts.php:214
+#: svn/tags/1.5.2/super-simple-related-posts.php:215
 #: svn/trunk/super-simple-related-posts.php:215
 msgid "Random"
 msgstr ""
@@ -273,6 +292,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:215
 #: svn/tags/1.5.1/super-simple-related-posts.php:216
 #: svn/tags/1.5.1/super_simple_related_posts.php:215
+#: svn/tags/1.5.2/super-simple-related-posts.php:216
 #: svn/trunk/super-simple-related-posts.php:216
 msgid "Comment Count"
 msgstr ""
@@ -286,6 +306,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:228
 #: svn/tags/1.5.1/super-simple-related-posts.php:229
 #: svn/tags/1.5.1/super_simple_related_posts.php:228
+#: svn/tags/1.5.2/super-simple-related-posts.php:229
 #: svn/trunk/super-simple-related-posts.php:229
 msgid "Order:"
 msgstr ""
@@ -299,6 +320,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:233
 #: svn/tags/1.5.1/super-simple-related-posts.php:234
 #: svn/tags/1.5.1/super_simple_related_posts.php:233
+#: svn/tags/1.5.2/super-simple-related-posts.php:234
 #: svn/trunk/super-simple-related-posts.php:234
 msgid "Ascending"
 msgstr ""
@@ -312,6 +334,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:234
 #: svn/tags/1.5.1/super-simple-related-posts.php:235
 #: svn/tags/1.5.1/super_simple_related_posts.php:234
+#: svn/tags/1.5.2/super-simple-related-posts.php:235
 #: svn/trunk/super-simple-related-posts.php:235
 msgid "Descending"
 msgstr ""
@@ -325,6 +348,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:247
 #: svn/tags/1.5.1/super-simple-related-posts.php:248
 #: svn/tags/1.5.1/super_simple_related_posts.php:247
+#: svn/tags/1.5.2/super-simple-related-posts.php:248
 #: svn/trunk/super-simple-related-posts.php:248
 msgid "Number of posts to show:"
 msgstr ""
@@ -336,6 +360,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:251
 #: svn/tags/1.5.1/super-simple-related-posts.php:252
 #: svn/tags/1.5.1/super_simple_related_posts.php:251
+#: svn/tags/1.5.2/super-simple-related-posts.php:252
 #: svn/trunk/super-simple-related-posts.php:252
 msgid "Unlimited"
 msgstr ""
@@ -347,6 +372,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:264
 #: svn/tags/1.5.1/super-simple-related-posts.php:265
 #: svn/tags/1.5.1/super_simple_related_posts.php:264
+#: svn/tags/1.5.2/super-simple-related-posts.php:265
 #: svn/trunk/super-simple-related-posts.php:265
 msgid "Include featured image"
 msgstr ""
@@ -354,6 +380,7 @@ msgstr ""
 #: super-simple-related-posts.php:271
 #: svn/tags/1.5/super-simple-related-posts.php:271
 #: svn/tags/1.5.1/super-simple-related-posts.php:271
+#: svn/tags/1.5.2/super-simple-related-posts.php:271
 #: svn/trunk/super-simple-related-posts.php:271
 msgid "Exclude duplicates"
 msgstr ""
@@ -367,6 +394,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:269
 #: svn/tags/1.5.1/super-simple-related-posts.php:276
 #: svn/tags/1.5.1/super_simple_related_posts.php:269
+#: svn/tags/1.5.2/super-simple-related-posts.php:276
 #: svn/trunk/super-simple-related-posts.php:276
 msgid "If there are no related posts:"
 msgstr ""
@@ -380,6 +408,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:271
 #: svn/tags/1.5.1/super-simple-related-posts.php:278
 #: svn/tags/1.5.1/super_simple_related_posts.php:271
+#: svn/tags/1.5.2/super-simple-related-posts.php:278
 #: svn/trunk/super-simple-related-posts.php:278
 msgid "Hide the content/widget"
 msgstr ""
@@ -393,6 +422,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:273
 #: svn/tags/1.5.1/super-simple-related-posts.php:280
 #: svn/tags/1.5.1/super_simple_related_posts.php:273
+#: svn/tags/1.5.2/super-simple-related-posts.php:280
 #: svn/trunk/super-simple-related-posts.php:280
 msgid "Show the following message:"
 msgstr ""
@@ -406,6 +436,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:279
 #: svn/tags/1.5.1/super-simple-related-posts.php:286
 #: svn/tags/1.5.1/super_simple_related_posts.php:279
+#: svn/tags/1.5.2/super-simple-related-posts.php:286
 #: svn/trunk/super-simple-related-posts.php:286
 msgid "Headings (post types):"
 msgstr ""
@@ -419,6 +450,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:281
 #: svn/tags/1.5.1/super-simple-related-posts.php:288
 #: svn/tags/1.5.1/super_simple_related_posts.php:281
+#: svn/tags/1.5.2/super-simple-related-posts.php:288
 #: svn/trunk/super-simple-related-posts.php:288
 msgid "Link post type headings"
 msgstr ""
@@ -432,6 +464,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:283
 #: svn/tags/1.5.1/super-simple-related-posts.php:290
 #: svn/tags/1.5.1/super_simple_related_posts.php:283
+#: svn/tags/1.5.2/super-simple-related-posts.php:290
 #: svn/trunk/super-simple-related-posts.php:290
 msgid "Hide post type headings"
 msgstr ""
@@ -445,6 +478,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:288
 #: svn/tags/1.5.1/super-simple-related-posts.php:295
 #: svn/tags/1.5.1/super_simple_related_posts.php:288
+#: svn/tags/1.5.2/super-simple-related-posts.php:295
 #: svn/trunk/super-simple-related-posts.php:295
 msgid "Subheadings (taxonomy terms):"
 msgstr ""
@@ -458,6 +492,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:290
 #: svn/tags/1.5.1/super-simple-related-posts.php:297
 #: svn/tags/1.5.1/super_simple_related_posts.php:290
+#: svn/tags/1.5.2/super-simple-related-posts.php:297
 #: svn/trunk/super-simple-related-posts.php:297
 msgid "Link taxonomy term subheadings"
 msgstr ""
@@ -471,6 +506,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:292
 #: svn/tags/1.5.1/super-simple-related-posts.php:299
 #: svn/tags/1.5.1/super_simple_related_posts.php:292
+#: svn/tags/1.5.2/super-simple-related-posts.php:299
 #: svn/trunk/super-simple-related-posts.php:299
 msgid "Hide taxonomy term subheadings"
 msgstr ""
@@ -484,6 +520,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:297
 #: svn/tags/1.5.1/super-simple-related-posts.php:304
 #: svn/tags/1.5.1/super_simple_related_posts.php:297
+#: svn/tags/1.5.2/super-simple-related-posts.php:304
 #: svn/trunk/super-simple-related-posts.php:304
 msgid "HTML before widget:"
 msgstr ""
@@ -497,6 +534,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:298
 #: svn/tags/1.5.1/super-simple-related-posts.php:305
 #: svn/tags/1.5.1/super_simple_related_posts.php:298
+#: svn/tags/1.5.2/super-simple-related-posts.php:305
 #: svn/trunk/super-simple-related-posts.php:305
 msgid "e.g. <p>Intro text goes here&hellip;</p>"
 msgstr ""
@@ -510,6 +548,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:303
 #: svn/tags/1.5.1/super-simple-related-posts.php:310
 #: svn/tags/1.5.1/super_simple_related_posts.php:303
+#: svn/tags/1.5.2/super-simple-related-posts.php:310
 #: svn/trunk/super-simple-related-posts.php:310
 msgid "HTML after widget:"
 msgstr ""
@@ -523,6 +562,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:304
 #: svn/tags/1.5.1/super-simple-related-posts.php:311
 #: svn/tags/1.5.1/super_simple_related_posts.php:304
+#: svn/tags/1.5.2/super-simple-related-posts.php:311
 #: svn/trunk/super-simple-related-posts.php:311
 msgid "e.g. <a href=\"#\">Learn more &raquo;</a>"
 msgstr ""
@@ -536,6 +576,7 @@ msgstr ""
 #: svn/tags/1.5/super_simple_related_posts.php:359
 #: svn/tags/1.5.1/super-simple-related-posts.php:366
 #: svn/tags/1.5.1/super_simple_related_posts.php:359
+#: svn/tags/1.5.2/super-simple-related-posts.php:366
 #: svn/trunk/super-simple-related-posts.php:366
 msgid "Related Posts"
 msgstr ""
