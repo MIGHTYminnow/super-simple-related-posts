@@ -122,6 +122,9 @@ Banner photo by [Susannah Kay](http://susannahkay.com).
 
 == Changelog ==
 
+= 1.5.2 =
+* Remove duplicate plugin file.
+
 = 1.5.1 =
 * Remove debugging ID's appearing after post links.
 
@@ -148,6 +151,9 @@ Banner photo by [Susannah Kay](http://susannahkay.com).
 * First release
 
 == Upgrade Notice ==
+
+= 1.5.2 =
+* Remove duplicate plugin file.
 
 = 1.5.1 =
 * Remove debugging ID's appearing after post links.
