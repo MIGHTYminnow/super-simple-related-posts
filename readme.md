@@ -4,7 +4,7 @@
 **Tags:**              related, posts, content, category, tag, taxonomy, widget  
 **Requires at least:** 3.0  
 **Tested up to:**      3.9.1  
-**Stable tag:**        1.5.1  
+**Stable tag:**        1.5.2  
 **License:**           GPLv2 or later  
 **License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -126,6 +126,9 @@ Banner photo by [Susannah Kay](http://susannahkay.com).
 
 ## Changelog ##
 
+### 1.5.2 ###
+* Remove duplicate plugin file.
+
 ### 1.5.1 ###
 * Remove debugging ID's appearing after post links.
 
@@ -152,6 +155,9 @@ Banner photo by [Susannah Kay](http://susannahkay.com).
 * First release
 
 ## Upgrade Notice ##
+
+### 1.5.2 ###
+* Remove duplicate plugin file.
 
 ### 1.5.1 ###
 * Remove debugging ID's appearing after post links.
