@@ -8,7 +8,7 @@
  * Plugin Name: Super Simple Related Posts
  * Plugin URI:  http://mightyminnow.com
  * Description: A super simple plugin to output related posts based on categories, tags, or custom taxonomies.
- * Version:     1.5.3
+ * Version:     1.5.4
  * Author:      MIGHTYminnow
  * Author URI:  http://mightyminnow.com
  * License:     GPLv2+
@@ -30,7 +30,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 // Useful global constants
-define( 'SSRP_VERSION', '1.3' );
+define( 'SSRP_VERSION', '1.5.4' );
 define( 'SSRP_URL',     plugin_dir_url( __FILE__ ) );
 define( 'SSRP_PATH',    dirname( __FILE__ ) . '/' );
 
