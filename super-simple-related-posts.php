@@ -327,7 +327,7 @@ class SSRP_Widget extends WP_Widget {
         $new_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
         // Sanitize title
-        $new_instance['no_posts_message'] = ( ! empty( $new_instance['no_posts_message'] ) ) ? wp_kses( $new_instance['no_posts_message'] ) : '';
+        $new_instance['no_posts_message'] = ( ! empty( $new_instance['no_posts_message'] ) ) ? sanitize_title( $new_instance['no_posts_message'] ) : '';
 
         // Sanitize before_HTML & after_HTML
         if ( current_user_can('unfiltered_html') ) {
