@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Super_Simple_Related_posts
- * @version 1.4
+ * @version 1.5.4
  */
 
 /**
